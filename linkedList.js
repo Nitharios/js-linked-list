@@ -30,7 +30,7 @@ function linkedListGenerator(){
       next : null
     };
 
-    if (head === null) {      
+    if (!head) {      
       head = newNode;
       tail = newNode;
 
@@ -41,51 +41,52 @@ function linkedListGenerator(){
     return tail;
   }
 
-  function get(num) {
-    if (num < 0) {
+  function get(index) {
+    if (index < 0 || !head) {
       return false;
 
-    } else if (num === 0) {
+    } else if (index === 0) {
       return head;
     
     } else { 
-      var currentNode = head;
+      var targetNode = head;
 
-      for (var i = 0; i < num; i++) {
-        if (currentNode.next === null) {
+      for (var i = 0; i < index; i++) {
+        if (!targetNode.next) {
           return false;
         }
 
-        currentNode = currentNode.next;
+        targetNode = targetNode.next;
       }
 
-      return currentNode;
+      return targetNode;
     }
   }
 
-  function remove(num) {
-    var previousNode = get(num - 1);
-    var targetNode = get(num);
-    var nextNode = get(num+1);
+  function remove(index) {
+    var previousNode = get(index - 1);
+    var targetNode = get(index);
+    //var nextNode = get(index+1);
 
     if (!targetNode) {
       return false;
     
     } else if (!previousNode) {
-      head = nextNode;
+      //head = nextNode;
+      head = targetNode.next;
     
-    } else if (!nextNode) {
+    } else if (!targetNode.next) { //OR: nextNode
       tail = previousNode;
       tail.next = null;
     
     } else {
-      previousNode.next = nextNode;
+      previousNode.next = targetNode.next;
     }
   }
 
-  function insert(val, num) {
-    var previousNode = get(num-1);
-    var targetNode = get(num);
+  function insert(val, index) {
+    var previousNode = get(index-1);
+    var targetNode = get(index);
     var newNode = {
       value : val,
       next : null
