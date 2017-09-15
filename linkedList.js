@@ -6,6 +6,7 @@
 function linkedListGenerator(){
   var current = null;
   var temp = {};
+  var anotherTemp = {};
 
   var head = null;
   var tail = null;
@@ -33,9 +34,9 @@ function linkedListGenerator(){
       next : null
     };
 
-    if (current === null) {
-      head = tail;      
+    if (current === null) {      
       current = tail;
+      head = current;
 
     } else {
       current.next = tail;
@@ -46,7 +47,6 @@ function linkedListGenerator(){
 
   function get(num) {
     temp = head;
-
 
     for (var i = 0; i < num; i++) {
       if (temp.next === null) {
@@ -59,7 +59,14 @@ function linkedListGenerator(){
   }
 
   function remove(num) {
+    temp = head;
 
+    for (var i = 0; i < num-1; i++) {
+      temp = temp.next;
+    }
+
+    temp = anotherTemp.next;
+    anotherTemp = anotherTemp.next;
   }
 
   function insert(val, num) {
