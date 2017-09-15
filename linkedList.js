@@ -91,7 +91,7 @@ function linkedListGenerator(){
       next : null
     };
 
-    if (num < 0 || targetNode === false) {
+    if (targetNode === false) {
       return false;
 
     } else if (previousNode === false) {
