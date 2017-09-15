@@ -68,13 +68,13 @@ function linkedListGenerator(){
     var targetNode = get(num);
     var nextNode = get(num+1);
 
-    if (targetNode === false) {
+    if (!targetNode) {
       return false;
     
-    } else if (previousNode === false) {
+    } else if (!previousNode) {
       head = nextNode;
     
-    } else if (nextNode === false) {
+    } else if (!nextNode) {
       tail = previousNode;
       tail.next = null;
     
@@ -91,10 +91,10 @@ function linkedListGenerator(){
       next : null
     };
 
-    if (targetNode === false) {
+    if (!targetNode) {
       return false;
 
-    } else if (previousNode === false) {
+    } else if (!previousNode) {
       newNode.next = head;
       head = newNode;
     
