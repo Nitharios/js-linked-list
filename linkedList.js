@@ -93,11 +93,12 @@ function linkedListGenerator(){
       next : null
     };
 
-    if (previousNode === false) {
+    if (num < 0 || targetNode === false) {
+      return false;
+
+    } else if (previousNode === false) {
       newNode.next = head;
-    
-    } else if (targetNode === false) {
-      add(val);
+      head = newNode;
     
     } else {
       newNode.next = targetNode;
