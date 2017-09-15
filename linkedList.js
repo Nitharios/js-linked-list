@@ -5,11 +5,10 @@
  */
 function linkedListGenerator(){
   var zelda = null;
+  var newNode = {};
 
   var head = null;
   var tail = null;
-  var temp;
-  var current;
 
   return {
     getHead : getHead,
@@ -29,38 +28,32 @@ function linkedListGenerator(){
   }
 
   function add(val) {
-    
+    tail = {
+      value : val,
+      next : null
+    };
+
     if (zelda === null) {
-      zelda = {
-        value : val,
-        next : null
-      };
+      zelda = tail;
 
       head = zelda;
       tail = zelda;
 
     } else {
-      getTail().next = {
-        value : val,
-        next : null
-      };
-
-      tail = {
-        value : val,
-        next : null
-      };
+      newNode.next = tail;
+      zelda.next = newNode;
     }
     return tail;
   }
 
   function get(num) {
-    temp = getHead();
+    // newNodeO = zelda;
 
-    for (var i = 0; i < num; i++) {
-      temp = temp.next;
-    }
+    // for (var i = 0; i < num; i++) {
+    //   newNodeO = alpha.next;
+    // }
 
-    return temp;
+    // return newNodeO;
   }
 
   function remove(num) {
