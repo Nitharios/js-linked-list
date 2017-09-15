@@ -4,9 +4,11 @@
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
+  var zelda = {};
+
   var head = null;
   var tail = null;
-  var temp = {};
+  var temp;
   var current;
 
   return {
@@ -27,10 +29,22 @@ function linkedListGenerator(){
   }
 
   function add(val) {
-    temp.next = {
-      value: val
-    };
-    return temp;
+    
+    if (zelda) {
+      zelda = {
+        value : val,
+        next : null
+      };
+      tail = zelda;
+
+    } else {
+      getTail().next = {
+        value : val,
+        next : null
+      };
+    }
+
+    return zelda;
   }
 
   function get(num) {
