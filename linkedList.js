@@ -46,23 +46,23 @@ function linkedListGenerator(){
   function get(num) {
     if (num < 0) {
       return false;
-    }
 
-    var currentNode = head;
-
-    if (num === 0) {
+    } else if (num === 0) {
       return head;
-    }
+    
+    } else { 
+      var currentNode = head;
 
-    for (var i = 0; i < num; i++) {
-      if (currentNode.next === null) {
-        return false;
+      for (var i = 0; i < num; i++) {
+        if (currentNode.next === null) {
+          return false;
+        }
+
+        currentNode = currentNode.next;
       }
 
-      currentNode = currentNode.next;
+      return currentNode;
     }
-
-    return currentNode;
   }
 
   function remove(num) {
