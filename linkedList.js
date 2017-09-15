@@ -1,13 +1,11 @@
+'use strict'
+
 /**
  * @name  linkedListGenerator
  * @description  Main Module
  * @return {Object} an object exposing methods to be used to manipulate a linked list
  */
 function linkedListGenerator(){
-  var current = null;
-  var temp = {};
-  var anotherTemp = {};
-
   var head = null;
   var tail = null;
 
@@ -29,47 +27,81 @@ function linkedListGenerator(){
   }
 
   function add(val) {
-    tail = {
+    var newNode = {
       value : val,
       next : null
     };
 
-    if (current === null) {      
-      current = tail;
-      head = current;
+    if (head === null) {      
+      head = newNode;
+      tail = newNode;
 
     } else {
-      current.next = tail;
-      current = current.next;
+      tail.next = newNode;
+      tail = newNode;
     }
     return tail;
   }
 
   function get(num) {
-    temp = head;
-
-    for (var i = 0; i < num; i++) {
-      if (temp.next === null) {
-        return false;
-      }
-      temp = temp.next;
+    if (num < 0) {
+      return false;
     }
 
-    return temp;
+    var currentNode = head;
+
+    if (num === 0) {
+      return head;
+    }
+
+    for (var i = 0; i < num; i++) {
+      if (currentNode.next === null) {
+        return false;
+      }
+
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
   }
 
   function remove(num) {
-    temp = head;
+    var previousNode = get(num - 1);
+    var targetNode = get(num);
+    var nextNode = get(num+1);
 
-    for (var i = 0; i < num-1; i++) {
-      temp = temp.next;
+    if (targetNode === false) {
+      return false;
+    
+    } else if (previousNode === false) {
+      head = nextNode;
+    
+    } else if (nextNode === false) {
+      tail = previousNode;
+      tail.next = null;
+    
+    } else {
+      previousNode.next = nextNode;
     }
-
-    temp = anotherTemp.next;
-    anotherTemp = anotherTemp.next;
   }
 
   function insert(val, num) {
+    var previousNode = get(num-1);
+    var targetNode = get(num);
+    var newNode = {
+      value : val,
+      next : null
+    };
 
+    if (previousNode === false) {
+      newNode.next = head;
+    
+    } else if (targetNode === false) {
+      add(val);
+    
+    } else {
+      newNode.next = targetNode;
+      previousNode.next = newNode;
+    }
   }
 }
