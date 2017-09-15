@@ -1,5 +1,3 @@
-'use strict'
-
 /**
  * @name  linkedListGenerator
  * @description  Main Module
