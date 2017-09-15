@@ -5,7 +5,7 @@
  */
 function linkedListGenerator(){
   var zelda = null;
-  var newNode = {};
+  var temp = {};
 
   var head = null;
   var tail = null;
@@ -34,26 +34,24 @@ function linkedListGenerator(){
     };
 
     if (zelda === null) {
+      head = tail;      
       zelda = tail;
 
-      head = zelda;
-      tail = zelda;
-
     } else {
-      newNode.next = tail;
-      zelda.next = newNode;
+      zelda.next = tail;
+      zelda = zelda.next;
     }
     return tail;
   }
 
   function get(num) {
-    // newNodeO = zelda;
+    temp = head;
 
-    // for (var i = 0; i < num; i++) {
-    //   newNodeO = alpha.next;
-    // }
+    for (var i = 0; i < num; i++) {
+      temp = temp.next;
+    }
 
-    // return newNodeO;
+    return temp;
   }
 
   function remove(num) {
